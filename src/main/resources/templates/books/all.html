@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container">
+    <h1 th:text="${title}"></h1>
+    <ul class="book-filters" sec:authorize="isAuthenticated()">
+        <li><a href="/books/">All</a></li>
+        <li th:each="category: ${categories}">
+            <a th:href="${'/books?category='+category.name}"
+               th:text="${category.name}">
+            </a>
+        </li>
+    </ul>
+    <div class="book-list">
+        <div class="book" th:each="book: ${books}">
+            <div class="img-container">
+                <img th:src="${book.coverImage}">
+            </div>
+            <div class="info">
+                <div th:text="${book.title}"></div>
+                <div th:text="${book.author}"></div>
+                <div th:text="${book.category}"></div>
+            </div>
+            <div class="buttons" sec:authorize="isAuthenticated()">
+                <a class="btn btn-success btn-sm" th:href="'/books/'+${book.id} + '/edit'">Edit</a>
+                <a class="btn btn-danger btn-sm" th:href="'/books/'+${book.id}+'/delete'">Delete</a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

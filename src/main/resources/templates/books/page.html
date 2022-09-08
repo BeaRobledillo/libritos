@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container">
+    <h1 th:text="${libro.title}"></h1>
+    <h2 th:text="${libro.author}"></h2>
+    <h3 th:text="${libro.category}"></h3>
+</section>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>

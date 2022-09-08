@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head"></head>
+<body>
+<header th:replace="fragments/header"></header>
+<section class="container">
+    <form th:action="@{/books/new}" th:object="${book}" method="post">
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}">
+            <label class="col-md2" for="title">Title</label>
+            <input th:field="*{title}" type="text" class="col-md6 form-control form-control-sm" id="title"
+                   placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="author">Author</label>
+            <input th:field="*{author}" type="text" class="col-md6 form-control form-control-sm" id="author"
+                   placeholder="Enter author">
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="category">Category</label>
+            <select th:field="*{category}" type="text" class="col-md6 form-control form-control-sm" id="category">
+                <option th:each="category: ${categories}"
+                        th:value="${category.name}"
+                        th:text="${category.name}"
+                >
+
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="col-md2" for="coverImage">CoverImage</label>
+            <input th:field="*{coverImage}" type="url" class="col-md6 form-control form-control-sm" id="coverImage"
+                   placeholder="Add an image url">
+        </div>
+        <div class="card-footer ">
+            <input type="submit" class="btn btn-primary btn-sm" value="Save"/>
+        </div>
+    </form>
+</section>
+<footer th:replace="fragments/footer"></footer>
+</body>
+</html>
