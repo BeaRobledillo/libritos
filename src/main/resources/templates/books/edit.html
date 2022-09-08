@@ -4,6 +4,7 @@
 <body>
 <header th:replace="fragments/header"></header>
 <section class="container">
+    <h1 th:text="${title}"></h1>
     <form th:action="@{/books/new}" th:object="${book}" method="post">
         <div class="form-group">
             <input type="hidden" th:field="*{id}">
